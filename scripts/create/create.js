@@ -758,6 +758,13 @@ async function init() {
         assigneeList.innerHTML = optionsHTML;
       }
     }
+
+    if (currentUser && currentUser.role === 'personal') {
+      const assigneeInput = document.getElementById('taskAssignee');
+      if (assigneeInput && assigneeInput.closest('.field')) {
+        assigneeInput.closest('.field').style.display = 'none';
+      }
+    }
   }
 
   syncTimeInputStates();
