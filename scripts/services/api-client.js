@@ -108,7 +108,7 @@
    */
   function resolveApiBase() {
     if (typeof window === 'undefined' || !window.location) {
-      return 'https://webwondersnexusweave-production.up.railway.app/api';
+      return 'https://webwondersnexusweave-production-fb46.up.railway.app/api';
     }
     const { protocol, hostname, port } = window.location;
 
@@ -118,7 +118,7 @@
     }
     
     // Deployed to production (e.g. Vercel)
-    return 'https://webwondersnexusweave-production.up.railway.app/api';
+    return 'https://webwondersnexusweave-production-fb46.up.railway.app/api';
   }
 
   const API_BASE = resolveApiBase();
@@ -133,7 +133,7 @@
    */
   async function checkServerHealth() {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
     try {
       const res = await fetch(`${API_BASE}/health`, { signal: controller.signal });
       const data = await res.json().catch(() => ({}));
